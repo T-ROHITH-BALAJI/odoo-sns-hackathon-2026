@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { Menu, X, Search, Sun, Moon, Plane } from 'lucide-react';
 
@@ -16,10 +17,10 @@ export default function Navbar() {
     }, []);
 
     const navLinks = [
-        { name: 'Destinations', href: '#' },
-        { name: 'Travel Guides', href: '#' },
-        { name: 'Inspiration', href: '#' },
-        { name: 'Stay', href: '#' },
+        { name: 'Destinations', href: '#destinations' },
+        { name: 'Travel Guides', href: '#guides' },
+        { name: 'Inspiration', href: '#inspiration' },
+        { name: 'Stay', href: '#stay' },
     ];
 
     return (
@@ -30,12 +31,12 @@ export default function Navbar() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-20">
                     {/* Logo */}
-                    <div className="flex-shrink-0 flex items-center gap-2">
+                    <Link to="/" className="flex-shrink-0 flex items-center gap-2">
                         <Plane className="w-7 h-7 text-primary rotate-45" />
                         <span className="font-serif font-bold text-2xl tracking-tight text-gray-900 dark:text-white">
                             GLOBE<span className="text-primary">TROTTER</span>
                         </span>
-                    </div>
+                    </Link>
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex space-x-8 items-center">
@@ -66,12 +67,12 @@ export default function Navbar() {
                         </button>
 
                         {/* Sign In button */}
-                        <a
-                            href="#"
+                        <Link
+                            to="/login"
                             className="hidden sm:inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium rounded-full text-white bg-gray-900 dark:bg-white dark:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-200 transition-all shadow-sm"
                         >
                             Sign In
-                        </a>
+                        </Link>
 
                         {/* Mobile menu button */}
                         <button
@@ -96,12 +97,12 @@ export default function Navbar() {
                                     {link.name}
                                 </a>
                             ))}
-                            <a
-                                href="#"
+                            <Link
+                                to="/login"
                                 className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-full text-white bg-gray-900 dark:bg-white dark:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-200 transition-all mt-2"
                             >
                                 Sign In
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 )}
