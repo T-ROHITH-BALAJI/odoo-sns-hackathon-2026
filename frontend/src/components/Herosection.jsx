@@ -1,4 +1,5 @@
 import { Play, Plane } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function HeroSection() {
     return (
@@ -19,12 +20,12 @@ export default function HeroSection() {
                             Find the unique moments and hidden gems that ignite unforgettable experiences. From rare encounters to remarkable destinations, we help you uncover the spark.
                         </p>
                         <div className="flex items-center gap-4">
-                            <a
-                                href="#"
+                            <Link
+                                to="/dashboard"
                                 className="inline-flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-semibold rounded-full text-white bg-primary shadow-lg hover:bg-opacity-90 hover:scale-105 transition-all duration-200"
                             >
                                 Plan your trip
-                            </a>
+                            </Link>
                             <button className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white dark:bg-surface-dark shadow-md text-primary hover:text-gray-900 dark:hover:text-white hover:scale-105 transition-all">
                                 <Play className="w-5 h-5 fill-current" />
                             </button>

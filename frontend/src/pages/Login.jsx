@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+import { supabase } from '../lib/supabaseClient';
 import {
     Mail,
     Lock,
@@ -10,12 +11,16 @@ import {
     ArrowLeft,
     Eye,
     EyeOff,
-    Plane
+    Plane,
+    Loader2
 } from 'lucide-react';
 
 export default function Login() {
     const { isDark, toggleTheme } = useTheme();
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -27,17 +32,49 @@ export default function Login() {
             ...prev,
             [name]: value
         }));
+        // Clear error when user starts typing
+        if (error) setError(null);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Login data:', formData);
-        // Will integrate with Supabase later
+        setLoading(true);
+        setError(null);
+
+        try {
+            const { error } = await supabase.auth.signInWithPassword({
+                email: formData.email,
+                password: formData.password,
+            });
+
+            if (error) throw error;
+
+            // Successful login - navigate to dashboard
+            navigate('/dashboard');
+        } catch (error) {
+            setError(error.message);
+        } finally {
+            setLoading(false);
+        }
     };
 
-    const handleGoogleSignIn = () => {
-        console.log('Google Sign In clicked');
-        // Will integrate with Supabase Google OAuth later
+    const handleGoogleSignIn = async () => {
+        setLoading(true);
+        setError(null);
+
+        try {
+            const { error } = await supabase.auth.signInWithOAuth({
+                provider: 'google',
+                options: {
+                    redirectTo: `${window.location.origin}/dashboard`
+                }
+            });
+
+            if (error) throw error;
+        } catch (error) {
+            setError(error.message);
+            setLoading(false);
+        }
     };
 
     return (
@@ -131,10 +168,18 @@ export default function Login() {
                                 </p>
                             </div>
 
+                            {/* Error Message */}
+                            {error && (
+                                <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl">
+                                    <p className="text-sm text-red-600 dark:text-red-400 text-center">{error}</p>
+                                </div>
+                            )}
+
                             {/* Google Login Button */}
                             <button
                                 onClick={handleGoogleSignIn}
-                                className="w-full h-12 flex items-center justify-center gap-3 border border-gray-200 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors mb-8"
+                                disabled={loading}
+                                className="w-full h-12 flex items-center justify-center gap-3 border border-gray-200 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors mb-8 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 <svg className="w-5 h-5" viewBox="0 0 24 24">
                                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -204,10 +249,20 @@ export default function Login() {
                                 {/* Submit Button */}
                                 <button
                                     type="submit"
-                                    className="mt-4 w-full h-14 bg-primary hover:bg-primary/90 active:scale-[0.99] text-white rounded-xl text-base font-bold transition-all shadow-lg shadow-primary/30 flex items-center justify-center gap-2"
+                                    disabled={loading}
+                                    className="mt-4 w-full h-14 bg-primary hover:bg-primary/90 active:scale-[0.99] text-white rounded-xl text-base font-bold transition-all shadow-lg shadow-primary/30 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                                 >
-                                    <span>Sign In</span>
-                                    <ArrowRight className="w-5 h-5" />
+                                    {loading ? (
+                                        <>
+                                            <Loader2 className="w-5 h-5 animate-spin" />
+                                            <span>Signing in...</span>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <span>Sign In</span>
+                                            <ArrowRight className="w-5 h-5" />
+                                        </>
+                                    )}
                                 </button>
                             </form>
 

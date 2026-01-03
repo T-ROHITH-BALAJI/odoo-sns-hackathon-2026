@@ -12,11 +12,16 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.89.0",
     "clsx": "^2.1.1",
+    "date-fns": "^3.0.6",
+    "leaflet": "^1.9.4",
+    "leaflet-routing-machine": "^3.2.12",
     "lucide-react": "^0.562.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-hot-toast": "^2.6.0",
-    "react-router-dom": "^7.11.0"
+    "react-leaflet": "^4.2.1",
+    "react-router-dom": "^7.11.0",
+    "recharts": "^2.10.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

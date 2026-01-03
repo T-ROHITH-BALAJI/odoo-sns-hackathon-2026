@@ -1,0 +1,182 @@
+.dashboard {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-header p {
+    color: var(--gray-600);
+}
+
+.loading {
+    text-align: center;
+    padding: 3rem;
+    color: var(--gray-500);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+.empty-state h2 {
+    font-size: 1.5rem;
+    margin: 1rem 0 0.5rem;
+    color: var(--gray-700);
+}
+
+.empty-state p {
+    color: var(--gray-500);
+    margin-bottom: 2rem;
+}
+
+.trips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.trip-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    transition: all 0.2s;
+}
+
+.trip-card:hover {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    transform: translateY(-2px);
+}
+
+.trip-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+}
+
+.trip-card-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--gray-900);
+}
+
+.trip-status {
+    background-color: var(--gray-100);
+    color: var(--gray-700);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.trip-card-body {
+    margin-bottom: 1.5rem;
+}
+
+.trip-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gray-600);
+    margin-bottom: 0.5rem;
+}
+
+.trip-card-footer {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.trip-card-footer .btn {
+    flex: 1;
+    justify-content: center;
+}
+
+/* Quick Navigation Grid */
+.quick-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.quick-nav-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.quick-nav-card:hover {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    transform: translateY(-2px);
+}
+
+.quick-nav-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.quick-nav-content h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 0.25rem;
+}
+
+.quick-nav-content p {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    margin: 0;
+}
+
+/* Empty State Links */
+.empty-state-links {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--gray-200);
+}
+
+.explore-text {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    margin-bottom: 1rem;
+}
+
+.explore-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.explore-buttons .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
