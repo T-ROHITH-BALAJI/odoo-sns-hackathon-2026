@@ -40,3 +40,8 @@ Thumbs.db
 
 # Test coverage
 coverage/
+
+# Documentation (not tracked)
+*.md
+*.pdf
+docs/
