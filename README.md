@@ -27,6 +27,11 @@ Simply run `START_DEMO.bat` and the app opens with full access!
 - **Notes & Customization**: Add personal notes and preferences
 - **Date Range Planning**: Automated day numbering and duration tracking
 
+<img width="2553" height="1517" alt="image" src="https://github.com/user-attachments/assets/48373938-4f99-48a2-9973-8a31f5ae1935" />
+<img width="1534" height="1408" alt="image" src="https://github.com/user-attachments/assets/30327cdc-0fea-4bb9-907c-41d6ec75c7e6" />
+
+## The dataset is ingested from Geonames and Kaggle, cleaned and standardized to include the following attributes: City Name, Country, Latitude, Longitude, Popularity Score, Cost of Living, and Created At.
+
 ### 📅 Calendar & Timeline Visualization
 - **Interactive Calendar**: Month-view with trip overlays
 - **Trip Timeline**: See your journey chronologically
