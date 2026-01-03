@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "globetrotter",
   "private": true,
   "version": "1.0.0",
@@ -7,7 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "backend": "node api/server.js",
+    "backend:dev": "node api/server.js",
+    "test": "node test-connection.js",
+    "test:api": "node test-api.js",
+    "test:backend": "node test-backend.js"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -19,7 +24,10 @@
     "leaflet-routing-machine": "^3.2.12",
     "recharts": "^2.10.3",
     "date-fns": "^3.0.6",
-    "lucide-react": "^0.309.0"
+    "lucide-react": "^0.309.0",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
